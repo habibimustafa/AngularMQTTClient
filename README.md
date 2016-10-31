@@ -23,8 +23,9 @@ bower install git@github.com:habibimustafa/AngularMQTTClient.git
     var app = angular.module('app', [
         'ngMQTTClient'
     ]);
-
-    app.config(['MQTTProvider',function(MQTTProvider){
+    
+    // use this
+    app.config(['MQTTProvider', function(MQTTProvider){
         var host  = "ws://OrgId.messaging.internetofthings.ibmcloud.com";
         var port  = "1883";
         var user  = "Your API Key";
@@ -33,6 +34,19 @@ bower install git@github.com:habibimustafa/AngularMQTTClient.git
         MQTTProvider.setHref(host+":"+port);
         MQTTProvider.setAuth(user+":"+pass);
         MQTTProvider.setClient("a:OrgId:AppId");
+    }]);
+    
+    // or this
+    app.config(['MQTTProvider', function(MQTTProvider){
+       var options = {
+             host: "OrgId.messaging.internetofthings.ibmcloud.com",
+             port: "1883",
+             username: "Your API Key",
+             password: "Your API Secret",
+             clientId: "a:OrgId:AppId"
+       };
+
+       MQTTProvider.setOptions(options);
     }]);
 
     app.controller('indexCtrl', ['$scope', 'MQTTService', function ($scope, MQTTService) {
