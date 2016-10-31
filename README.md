@@ -5,14 +5,14 @@ This project is based on https://github.com/mqttjs/MQTT.js#browser
 ## USE
 
 ```bash
-bower install angular-mqtt
+bower install git@github.com:habibimustafa/AngularMQTTClient.git
 ```
 
 
 ```html
 <script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/angular-mqtt/src/browserMqtt.js"></script>
-<script src="bower_components/angular-mqtt/src/AngularMQTTClient.js"></script>
+<script src="bower_components/AngularMQTTClient/src/browserMqtt.js"></script>
+<script src="bower_components/AngularMQTTClient/src/AngularMQTTClient.js"></script>
 
 ```
 
