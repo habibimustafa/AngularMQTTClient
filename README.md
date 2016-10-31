@@ -12,7 +12,7 @@ bower install angular-mqtt
 ```html
 <script src="bower_components/angular/angular.js"></script>
 <script src="bower_components/angular-mqtt/src/browserMqtt.js"></script>
-<script src="bower_components/angular-mqtt/src/angular-MQTT.js"></script>
+<script src="bower_components/angular-mqtt/src/AngularMQTTClient.js"></script>
 
 ```
 
@@ -23,27 +23,37 @@ bower install angular-mqtt
     ]);
 
     app.config(['MQTTProvider',function(MQTTProvider){
-        MQTTProvider.setHref('ws://cv.endaosi.com:18585');
+        var host  = "ws://OrgId.messaging.internetofthings.ibmcloud.com";
+        var port  = "1883";
+        var user  = "Your API Key";
+        var pass  = "Your API Secret";
+
+        MQTTProvider.setHref(host+":"+port);
+        MQTTProvider.setAuth(user+":"+pass);
+        MQTTProvider.setClient("a:OrgId:AppId");
     }]);
 
     app.controller('indexCtrl', ['$scope', 'MQTTService', function ($scope, MQTTService) {
-        MQTTService.on('hello', function(data){
+        
+        // Subscribing to device events
+        MQTTService.on('iot-2/type/device_type/id/device_id/evt/event_id/fmt/format_string', function(data){
             alert(data)
         });
-
-
-        MQTTService.send('hello','word');
-        MQTTService.send('hello','word1');
-        MQTTService.send('hello','word2');
+        
+        // Publishing device commands
+        MQTTService.send('iot-2/type/device_type/id/device_id/cmd/command_id/fmt/format_string','on');
+        MQTTService.send('iot-2/type/device_type/id/device_id/cmd/command_id/fmt/format_string','off');
+        MQTTService.send('iot-2/type/device_type/id/device_id/cmd/command_id/fmt/format_string','{"status":"on"}');
+        
+        // Subscribing to device commands
+        MQTTService.on('iot-2/type/device_type/id/device_id/evt/event_id/fmt/format_string', function(data){
+            alert(data)
+        });
+        
     }]);
 
 ```
 
-
-
-##TODO
-
-- add auth
-
 ---
 MQTT server install mothod see: http://blog.csdn.net/qhdcsj/article/details/45042515
+Bluemix IoT Platform API connections see: https://console.ng.bluemix.net/docs/services/IoT/applications/mqtt.html
