@@ -56,4 +56,5 @@ bower install angular-mqtt
 
 ---
 MQTT server install mothod see: http://blog.csdn.net/qhdcsj/article/details/45042515
+
 Bluemix IoT Platform API connections see: https://console.ng.bluemix.net/docs/services/IoT/applications/mqtt.html
