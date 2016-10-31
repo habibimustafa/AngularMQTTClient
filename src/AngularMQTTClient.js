@@ -1,16 +1,31 @@
 /**
  * Created by shellus on 2016-03-16.
+ * Add connection options by Habibi Mustafa on 2016-10-31.
  */
 angular.module('ngMQTT', [])
     .config(['$provide', function($provide){
         $provide.provider('MQTT', function(){
 
             var settings = {
-                href: ""
+                href: "",
+                opts: {
+                  auth: "",
+                  clientId: ""
+                }
             };
 
             this.setHref = function(href){
                 settings.href = href;
+            };
+            this.setAuth = function(auth){
+                settings.opts.auth = auth;
+            };
+            this.setClient = function(client){
+                settings.opts.clientId = client;
+            };
+            this.setOptions = function(opts){
+                settings.opts = {};
+                settings.opts = opts;
             };
             this.$get = function() {
                 return settings;
@@ -23,7 +38,10 @@ angular.module('ngMQTT', [])
             var Service = {};
             var callbacks = {};
 
-            var client = mqtt.connect(MQTT.href); // you add a ws:// url here
+            if(MQTT.href)
+              var client = mqtt.connect(MQTT.href, MQTT.opts); // connect with href
+            else
+              var client = mqtt.connect(MQTT.opts);
 
             client.on("message", function(topic, payload) {
                 try {
