@@ -56,6 +56,25 @@ bower install git@github.com:habibimustafa/AngularMQTTClient.git
 
 ```
 
+### AUTH
+- Create API Key from your IBM Bluemix IoT Platform Dashboard. See https://console.ng.bluemix.net/docs/services/IoT/platform_authorization.html#api-key
+- Using this code for Non-Secured Connection
+```javascript
+var host  = "ws://OrgId.messaging.internetofthings.ibmcloud.com";
+var port  = "1883";
+var user  = "Your API Key"; // example: a-orgId-a84ps90Ajs
+var pass  = "Your API Secret"; // example: MP$08VKz!8rXwnR-Q*
+var clientId = "a:OrgId:AppId"; // example: a:orgId:MyAndroidApp
+```
+- Using this code for Secured Connection
+```javascript
+var host  = "wss://OrgId.messaging.internetofthings.ibmcloud.com";
+var port  = "8883";
+var user  = "Your API Key"; // ex: a-orgId-a84ps90Ajs
+var pass  = "Your API Secret"; // ex: MP$08VKz!8rXwnR-Q*
+var clientId = "a:OrgId:AppId"; // example: a:orgId:MyAndroidApp
+```
+
 ---
 MQTT server install mothod see: http://blog.csdn.net/qhdcsj/article/details/45042515
 
