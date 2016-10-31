@@ -21,7 +21,7 @@ bower install git@github.com:habibimustafa/AngularMQTTClient.git
 
 ```javascript
     var app = angular.module('app', [
-        'ngMQTT'
+        'ngMQTTClient'
     ]);
 
     app.config(['MQTTProvider',function(MQTTProvider){
