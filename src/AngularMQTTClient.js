@@ -2,7 +2,7 @@
  * Created by shellus on 2016-03-16.
  * Add connection options by Habibi Mustafa on 2016-10-31.
  */
-angular.module('ngMQTT', [])
+angular.module('ngMQTTClient', [])
     .config(['$provide', function($provide){
         $provide.provider('MQTT', function(){
 
