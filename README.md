@@ -51,7 +51,15 @@ bower install git@github.com:habibimustafa/AngularMQTTClient.git
 
     app.controller('indexCtrl', ['$scope', 'MQTTService', function ($scope, MQTTService) {
         
-        // Subscribing to device events
+        // Publishing device events
+        MQTTService.send('iot-2/type/device_type/id/device_id/evt/event_id/fmt/format_string','on');
+        MQTTService.send('iot-2/type/device_type/id/device_id/evt/event_id/fmt/format_string','off');
+        MQTTService.send(
+            'iot-2/type/device_type/id/device_id/evt/event_id/fmt/format_string',
+            '{"status":"on"}'
+        );
+
+        // Subscribing device events
         MQTTService.on('iot-2/type/device_type/id/device_id/evt/event_id/fmt/format_string', function(data){
             console.log(data)
         });
@@ -64,8 +72,8 @@ bower install git@github.com:habibimustafa/AngularMQTTClient.git
             '{"status":"on"}'
         );
         
-        // Subscribing to device commands
-        MQTTService.on('iot-2/type/device_type/id/device_id/evt/event_id/fmt/format_string', function(data){
+        // Subscribing device commands
+        MQTTService.on('iot-2/type/device_type/id/device_id/cmd/command_id/fmt/format_string', function(data){
             console.log(data)
         });
         
@@ -76,7 +84,7 @@ bower install git@github.com:habibimustafa/AngularMQTTClient.git
 ### AUTH
 - Create API Key from your IBM Bluemix IoT Platform Dashboard. 
 See https://console.ng.bluemix.net/docs/services/IoT/platform_authorization.html#api-key
-- Using this code for Non-Secured Connection
+- Use this code for Non-Secured Connection
 ```javascript
     var host  = "ws://OrgId.messaging.internetofthings.ibmcloud.com";
     var port  = "1883";
@@ -84,7 +92,7 @@ See https://console.ng.bluemix.net/docs/services/IoT/platform_authorization.html
     var pass  = "Your API Secret"; // example: MP$08VKz!8rXwnR-Q*
     var clientId = "a:OrgId:AppId"; // example: a:orgId:MyAndroidApp
 ```
-- Using this code for Secured Connection
+- Use this code for Secured Connection
 ```javascript
     var host  = "wss://OrgId.messaging.internetofthings.ibmcloud.com";
     var port  = "8883";
