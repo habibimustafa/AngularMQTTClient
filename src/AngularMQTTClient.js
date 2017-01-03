@@ -59,7 +59,7 @@ angular.module('ngMQTTClient', [])
                     });
                     if(topic.match(regexpStr)){
                         $rootScope.$apply(function() {
-                            callback(data);
+                            callback(data, topic);
                         });
                     }
                 })
