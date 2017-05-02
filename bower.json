@@ -1,12 +1,12 @@
 {
-  "name": "angular-mqtt",
-  "homepage": "https://github.com/shellus/angular-MQTT",
+  "name": "angularmqttclient",
+  "homepage": "https://github.com/habibimustafa/AngularMQTTClient",
   "authors": [
-    "shellus <shellus@endaosi.com>"
+    "habibimustafa <habibi@dirakit.com>"
   ],
   "description": "Wrapper MQTT(websocket) in angularjs",
   "main": [
-    "./src/angular-MQTT.js",
+    "./src/AngularMQTTClient.js",
     "./src/browserMqtt.js"
   ],
   "moduleType": [],
